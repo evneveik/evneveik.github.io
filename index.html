@@ -11,6 +11,19 @@
 	<script src="OrbitControls.js"></script>
 		<script>
 			
+
+			    function dumpObject(obj, lines = [], isLast = true, prefix = '') {
+			      const localPrefix = isLast ? '└─' : '├─';
+			      lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
+			      const newPrefix = prefix + (isLast ? '  ' : '│ ');
+			      const lastNdx = obj.children.length - 1;
+			      obj.children.forEach((child, ndx) => {
+				const isLast = ndx === lastNdx;
+				dumpObject(child, lines, isLast, newPrefix);
+			      });
+			      return lines;
+			    }
+
 			var loader = new THREE.GLTFLoader();
 			
 			var renderer = new THREE.WebGLRenderer();
@@ -19,16 +32,25 @@
 			scene.background = new THREE.Color('green');
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
+function load(click){
 			
-			loader.load('HodeSculpt.gltf', function ( gltf ) {
+			try{
+				obj = scene.getObjectByName('Scene');
+				scene.remove(obj);
 
+			} catch (error){
+				console.error(error);
+			}
+			loader.load(click, function ( gltf ) {
 				scene.add( gltf.scene );
+				console.log(dumpObject(gltf.scene).join('\n'));
 
 			}, undefined, function ( error ) {
 
 				console.error( error );
 
 			} );
+}
 			const skyColor = 0xB1E1FF;  // light blue
     			const groundColor = 0xB97A20;  // brownish orange
     			const intensity = 1;
@@ -46,6 +68,8 @@
 			}
 			animate();
 		</script>
+		<button onClick="load('HodeSculpt.gltf')">Hode</button>
+		<button onClick="load('brille.glb')">Hode2</button>
 
 </body>
 </html>
