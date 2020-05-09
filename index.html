@@ -7,25 +7,41 @@
 </head>
 <body>
 	<script src="three.js"></script>
-
+	<script src="GLTFLoader.js"></script>
+	<script src="OrbitControls.js"></script>
 		<script>
+			
+			var loader = new THREE.GLTFLoader();
+			
+			var renderer = new THREE.WebGLRenderer();
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-			var renderer = new THREE.WebGLRenderer();
+			scene.background = new THREE.Color('green');
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
-			var geometry = new THREE.BoxGeometry();
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } 			);
-			var cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );
+			
+			loader.load('HodeSculpt.gltf', function ( gltf ) {
 
-			camera.position.z = 5;
+				scene.add( gltf.scene );
+
+			}, undefined, function ( error ) {
+
+				console.error( error );
+
+			} );
+			const skyColor = 0xB1E1FF;  // light blue
+    			const groundColor = 0xB97A20;  // brownish orange
+    			const intensity = 1;
+    			const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+    			scene.add(light);
+			var controls = new THREE.OrbitControls(camera, renderer.domElement);
+  			
+			controls.target.set( 0, 0, - 0.2 );
+  			controls.update();
+
 		
 			function animate() {
 					    requestAnimationFrame( animate );
-					    cube.rotation.x += 0.01;
-					    cube.rotation.y += 0.01;
 					    renderer.render( scene, camera );
 			}
 			animate();
