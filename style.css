@@ -6,6 +6,7 @@ title{
 
 body {
   background-color: lightblue;
+  margin: 0;
 }
 
 div {
@@ -22,6 +23,12 @@ h1{
 h1:hover{
     color:#f00;
     transition: all 0.3s ease;
+}
+
+#c{
+  width: 85%;
+  height: 85%;
+  display: block;
 }
 
 
