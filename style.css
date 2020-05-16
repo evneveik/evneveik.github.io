@@ -18,17 +18,35 @@ h1{
   text-align: center;
 }
 
-
-
-h1:hover{
-    color:#f00;
-    transition: all 0.3s ease;
+#bn1{
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    border-radius: 4px;
+    font-size: 24px;
+    float: left;
 }
 
+#bn2{
+    position: absolute;
+    left: 8px;
+    top: 42px;
+    border-radius: 4px;
+    font-size: 24px;
+    float: left;
+}
+
+button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+
 #c{
-  width: 85%;
-  height: 85%;
+  width: 100%;
+  height: auto;
   display: block;
+  z-index: -1;
 }
 
 
