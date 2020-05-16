@@ -22,18 +22,26 @@ h1{
     position: absolute;
     left: 8px;
     top: 5px;
+    width: 15%;
+    text-align:center;
+    padding: 5px 5px;
     border-radius: 4px;
-    font-size: 24px;
+    font-size: 32px;
     float: left;
+    z-index:0;
 }
 
 #bn2{
     position: absolute;
     left: 8px;
-    top: 42px;
+    top: 68px;
+    width: 15%;
+    text-align:center;
+    padding: 5px 5px;
     border-radius: 4px;
-    font-size: 24px;
+    font-size: 32px;
     float: left;
+    z-index:0;
 }
 
 button:hover {
