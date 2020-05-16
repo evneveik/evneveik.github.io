@@ -29,6 +29,7 @@ h1{
     font-size: 32px;
     float: left;
     z-index:0;
+    -webkit-appearance: none;
 }
 
 #bn2{
@@ -42,6 +43,7 @@ h1{
     font-size: 32px;
     float: left;
     z-index:0;
+    -webkit-appearance: none;
 }
 
 button:hover {
