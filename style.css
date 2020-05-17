@@ -19,6 +19,7 @@ h1{
 }
 
 #bn1{
+    background-color: gray;
     position: absolute;
     left: 8px;
     top: 5px;
@@ -33,6 +34,7 @@ h1{
 }
 
 #bn2{
+    background-color: gray;
     position: absolute;
     left: 8px;
     top: 68px;
