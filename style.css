@@ -16,13 +16,13 @@ div {
 h1{
   color: white;
   text-align: center;
+  size: 18px;
 }
 
-#bn1{
+.bn{
     background-color: gray;
-    position: absolute;
-    left: 8px;
-    top: 5px;
+    /* position: element(#c); */
+    /* transform: translateY(-70%); */
     width: 15%;
     text-align:center;
     padding: 5px 5px;
@@ -33,11 +33,26 @@ h1{
     -webkit-appearance: none;
 }
 
-#bn2{
+/* #bn2{ */
+/*     background-color: gray; */
+/*     position: absolute; */
+/*     left: 8px; */
+/*     top: 68px; */
+/*     width: 15%; */
+/*     text-align:center; */
+/*     padding: 5px 5px; */
+/*     border-radius: 4px; */
+/*     font-size: 32px; */
+/*     float: left; */
+/*     z-index:0; */
+/*     -webkit-appearance: none; */
+/* } */
+
+#back{
     background-color: gray;
     position: absolute;
     left: 8px;
-    top: 68px;
+    top: 95%;
     width: 15%;
     text-align:center;
     padding: 5px 5px;
