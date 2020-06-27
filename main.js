@@ -1,24 +1,30 @@
 import "./modules/three.js";
 import "./modules/OrbitControls.js";
 import "./modules/GLTFLoader.js";
-// import { readdirSync } from 'fs';
+
+
+
 const canvas = document.querySelector('#c');
-var files = ['Hode','Hus'];
-for(var i = 0; i < files.length; i++){
-    // i += 1;
-    let bn = document.createElement("button");
-    bn.classList.add('bn');
-    bn.id = 'b' + i.toString();
-    bn.innerText = files[i];
+var files = ['Hode', 'Hus', 'brille'];
+
+
+
+function createButton(btype, bclass, text) {
+    let bn = document.createElement(btype);
+    bn.classList.add(bclass);
+    // bn.id = 'b' + i.toString();
+    bn.innerText = text;
     document.body.appendChild(bn);
 }
 
 
+
+for(var i = 0; i < files.length; i++) {
+    createButton("p", "bn", files[i]);   
+
+}
+
 var knaps = document.getElementsByClassName("bn");
-
-
-
-
 
 const loader = new THREE.GLTFLoader();
 const renderer = new THREE.WebGLRenderer({canvas});
@@ -38,9 +44,6 @@ const texture = bgloader.load([
 scene.background = texture;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(canvas);
-
-
-
 const skyColor = 0xB1E1FF;  // light blue
 const groundColor = 0xB97A20;  // brownish orange
 const intensity = 1;
@@ -52,28 +55,6 @@ camera.position.set(0, 0, 10);
 controls.target.set(0, 0, 0);
 controls.enablePan = false;
 controls.update();
-
-
-function dumpObject(obj, lines = [], isLast = true, prefix = '') { 
-	    const localPrefix = isLast ? '└─' : '├─';
-	    lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
-	    const newPrefix = prefix + (isLast ? '  ' : '│ ');
-	    const lastNdx = obj.children.length - 1;
-	    obj.children.forEach((child, ndx) => {
-	    const isLast = ndx === lastNdx;
-	    dumpObject(child, lines, isLast, newPrefix);
-	    });
-	    return lines;
-}
-
-
-
-// let bn1 = document.getElementById('bn1');
-// let bn2 = document.getElementById('bn2');
-
-// bn2.onclick = loadObj('Hus.glb');
-// bn1.onclick = loadObj('Hode.glb');
-
 
 function loadObj(c) {
 
@@ -87,7 +68,6 @@ function loadObj(c) {
 	loader.load(c, function (gltf) {
 		let root = gltf.scene;
 		scene.add(root);
-		console.log(dumpObject(gltf.scene).join('\n'));
 		
 	}, undefined, function (error) {
 
@@ -97,19 +77,32 @@ function loadObj(c) {
 }
 
 var pos = 0;
-for(let i = 0; i < knaps.length; i++) {
+for(var i = 0; i < knaps.length; i++) {
     knaps[i].style.position = 'absolute';
     if(i == 0) {
-	pos = 8;
+	pos = 5;
     } else {
-	pos += 8;
+	pos += 5;
     }
+    let f = './meshes/' + files[i] + '.glb';
     knaps[i].style.top = pos.toString().concat('%');
     knaps[i].addEventListener('click', function() {
-	loadObj('./meshes/' + files[i] + '.glb')
+	loadObj(f)
     } );
 
 }
+
+createButton('p', 'cbn', 'back');
+var cbn = document.getElementsByClassName('cbn');
+
+
+
+cbn[0].addEventListener("click", function(){
+    location.href = 'index.html';
+});
+
+
+
 	
 
 function animate() {
@@ -117,6 +110,3 @@ function animate() {
 	renderer.render(scene, camera);
 }
 animate();
-
- 
-
