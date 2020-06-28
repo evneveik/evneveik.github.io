@@ -1,100 +1,31 @@
-<!DOCTYPE html>
-
 <html>
-<head>
+
 	<meta charset="utf-8">
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	
-	<title>HOI!</title>
+<head>
+    <title>Haai</title>
 </head>
+
 <body>
-		<canvas id="c"></canvas> 
-		<button onClick="load('HodeSculpt.gltf')">Hode</button>
-		<button onClick="load('testing28.glb')">Hode2</button>
-		
-			<!-- {{{ -->	
-	<script src="three.js"></script>
-	<script src="OrbitControls.js"></script>
-	<script src="GLTFLoader.js"></script>
+    <h1>Dette er en overskrift lizzm</h1>
 
-	<script>
-			<!-- function dumpObject(obj, lines = [], isLast = true, prefix = '') { -->
-	<!-- const localPrefix = isLast ? '└─' : '├─'; -->
-	<!-- lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`); -->
-	<!-- const newPrefix = prefix + (isLast ? '  ' : '│ '); -->
-	<!-- const lastNdx = obj.children.length - 1; -->
-	<!-- obj.children.forEach((child, ndx) => { -->
-		<!-- const isLast = ndx === lastNdx; -->
-		<!-- dumpObject(child, lines, isLast, newPrefix); -->
-	<!-- }); -->
-	<!-- return lines; -->
-<!-- } -->
-const canvas = document.querySelector('#c');
-
-var loader = new THREE.GLTFLoader();
-var renderer = new THREE.WebGLRenderer({canvas});
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const bgloader = new THREE.CubeTextureLoader();
-const texture = bgloader.load([
-    'skyboxes/pos-x.jpg',
-    'skyboxes/neg-x.jpg',
-    'skyboxes/pos-y.jpg',
-    'skyboxes/neg-y.jpg',
-    'skyboxes/pos-z.jpg',
-    'skyboxes/neg-z.jpg',
-  ]);
+    <div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<img class="modal-content" id="img01">
+	<div id="caption"></div>
+    </div>
 
 
 
 
+<script type='text/javascript' src="modal.js" ></script>
 
-scene.background = texture
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(canvas);
-
-function load(click) {
-
-	try {
-		obj = scene.getObjectByName('Scene');
-		scene.remove(obj);
-
-	} catch (error) {
-		console.error(error);
-	}
-	loader.load(click, function (gltf) {
-		scene.add(gltf.scene);
-		<!-- console.log(dumpObject(gltf.scene).join('\n')); -->
-
-	}, undefined, function (error) {
-
-		console.error(error);
-
-	});
-}
-
-const skyColor = 0xB1E1FF;  // light blue
-const groundColor = 0xB97A20;  // brownish orange
-const intensity = 1;
-const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
-scene.add(light);
-
-var controls = new THREE.OrbitControls(camera, canvas);
-camera.position.set(0, 0, 10);
-controls.target.set(0, 0, 0);
-controls.enablePan = false;
-controls.update();
+<br>
+<a href="3d.html">3d models</a>
 
 
-function animate() {
-	requestAnimationFrame(animate);
-	renderer.render(scene, camera);
-}
-animate();
-<!-- }}} -->
-
-</script>
 
 </body>
 
-</html> 
+</html>
