@@ -6,20 +6,21 @@ const imgfiles =  {
     'was2': 'Collaborative School Project Streetart 2009'
 }
 
+
+
+
 for(let [key, value] of Object.entries(imgfiles)) {
     
-    let cr = document.createElement('div'); 
-    cr.classList.add("side-crop");
-    cr.id = key;
+    // let cr = document.createElement('div'); 
+    // cr.classList.add("side-crop");
+    // cr.id = key;
     
     let mi = document.createElement("img");
     mi.src = './images/' + key + '.jpg';
-    mi.height = 300
-    mi.width = 300
     mi.alt = value;
     mi.classList.add('img');
-    document.body.appendChild(cr);
-    document.getElementById(key).appendChild(mi);
+    // document.body.appendChild(cr);
+    document.getElementById('images').appendChild(mi);
     
 }
 
