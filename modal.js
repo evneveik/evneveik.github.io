@@ -9,8 +9,8 @@ const imgfiles =  {
     'discofro': 'Digital 2009',
     'smoketilupuke': 'Posca on Canvas 2009',
     'teamDisco': 'Coverart for Albino superstars 2008',
-    'stylophone' : 'Digital 2010'
-    'surveillance_brew': 'Stencil print 2009'
+    'stylophone' : 'Digital 2010',
+    'surveillance_brew': 'Stencil print 2009',
 }
 
 
