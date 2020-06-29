@@ -3,7 +3,14 @@ const imgfiles =  {
     'KnebleSkalle': 'KnebleSkalle 2004',
     'Skisse1': 'Postits is the best!',
     'was3': 'Collaborative School Project Streetart 2009',
-    'was2': 'Collaborative School Project Streetart 2009'
+    'was2': 'Collaborative School Project Streetart 2009',
+    'smoky': 'Smoky : Digital 2008',
+    'Mique': 'Frontpage design For Mique Catalog',
+    'discofro': 'Digital 2009',
+    'smoketilupuke': 'Posca on Canvas 2009',
+    'teamDisco': 'Coverart for Albino superstars 2008',
+    'stylophone' : 'Digital 2010'
+    'surveillance_brew': 'Stencil print 2009'
 }
 
 
@@ -38,8 +45,22 @@ for(var i = 0; i < img.length; i++) {
     }
 }
 
+
+
 var span = document.getElementsByClassName("close")[0];
 
 span.onclick = function() {
   modal.style.display = "none";
+}
+
+var modal = document.getElementById('myModal');
+
+
+window.onkeyup = function() {
+	// console.log(event.key);
+	if(event.key === 'Escape') {
+		modal.style.display = "none";
+	}
+	
+
 }

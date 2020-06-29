@@ -5,7 +5,7 @@ import "./modules/GLTFLoader.js";
 
 
 const canvas = document.querySelector('#c');
-var files = ['Hode', 'Hus', 'brille'];
+var files = ['Hode', 'Hus'];
 
 
 
@@ -27,21 +27,25 @@ for(var i = 0; i < files.length; i++) {
 var knaps = document.getElementsByClassName("bn");
 
 const loader = new THREE.GLTFLoader();
-const renderer = new THREE.WebGLRenderer({canvas});
+const renderer = new THREE.WebGLRenderer({
+	canvas,
+	alpha:true,
+	premutlipliedAlpha:false,
+});
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-const bgloader = new THREE.CubeTextureLoader();
-const texture = bgloader.load([
-	    'skyboxes/pos-x.jpg',
-	    'skyboxes/neg-x.jpg',
-	    'skyboxes/pos-y.jpg',
-	    'skyboxes/neg-y.jpg',
-	    'skyboxes/pos-z.jpg',
-	    'skyboxes/neg-z.jpg',
-	  ]);
+// const bgloader = new THREE.CubeTextureLoader();
+// const texture = bgloader.load([
+// 	    'skyboxes/wall.jpg',
+// 	    'skyboxes/wall.jpg',
+// 	    'skyboxes/roof.jpg',
+// 	    'skyboxes/floor.jpg',
+// 	    'skyboxes/wall.jpg',
+// 	    'skyboxes/wall.jpg',
+// 	  ]);
 
-scene.background = texture;
+// scene.background = texture;
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(canvas);
 const skyColor = 0xB1E1FF;  // light blue
