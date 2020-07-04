@@ -31,17 +31,21 @@ for(let [key, value] of Object.entries(imgfiles)) {
     
 }
 
+
+
 var modal = document.getElementById('myModal');
 var img = document.getElementsByClassName('img');
 var modalImg = document.getElementById("img01");
-
+var activeImg;
 var captionText = document.getElementById("caption");
 console.log(img);
 for(var i = 0; i < img.length; i++) {
-      img[i].onclick = function(){
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      captionText.innerHTML = this.alt;
+	activeImg = i;
+	img[i].onclick = function showSlides() {
+	modal.style.display = "block";
+	modalImg.src = this.src;
+	captionText.innerHTML = this.alt;
+
     }
 }
 
@@ -53,13 +57,26 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
-var modal = document.getElementById('myModal');
-
-
 window.onkeyup = function() {
-	// console.log(event.key);
+	console.log(event.key);
 	if(event.key === 'Escape') {
-		modal.style.display = "none";
+	    modal.style.display = "none";
+	}
+	if(event.key === 'ArrowRight' && modal.style.display === "block"){ 
+	    if(activeImg < img.length) {
+		activeImg += 1;
+		modalImg.src = img[activeImg].src;
+		captionText.innerHTML = img[activeImg].alt;
+	    }
+
+
+	}
+	if(event.key === 'ArrowLeft' && modal.style.display === "block"){ 
+	    if(activeImg > 0){
+		activeImg -= 1;
+		modalImg.src = img[activeImg].src;
+		captionText.innerHTML = img[activeImg].alt;
+	    }
 	}
 	
 
